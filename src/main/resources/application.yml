@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: Dev
+---
+spring:
+#  datasource:
+#    url: …
+#    driver-class-name: _
+  profiles: Dev
+server:
+  port: 8099
+debug: true
