@@ -11,8 +11,14 @@ spring:
 server:
   port: 8099
 debug: true
-application:
-  queueOut: movieQueue
+app:
+  movieQueue: movieQueue
   movieLocation : C:/movie
+rabbit:
+  host: localhost
+  port: 5672
+  username: docker
+  password: docker
 ---
 spring:
+
