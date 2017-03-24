@@ -42,4 +42,14 @@ public class Video {
   public void setResolution(int resolution) {
     this.resolution = resolution;
   }
+
+  @Override
+  public String toString() {
+    return "Video{" +
+            "interactionId='" + interactionId + '\'' +
+            ", location='" + location + '\'' +
+            ", name='" + name + '\'' +
+            ", resolution=" + resolution +
+            '}';
+  }
 }

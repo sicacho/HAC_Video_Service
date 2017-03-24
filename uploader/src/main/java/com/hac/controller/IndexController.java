@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.annotation.MultipartConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,14 +28,10 @@ public class IndexController {
   @Autowired
   VideoService videoService;
 
-  @RequestMapping(value = "/",produces = "text/html")
-  public @ResponseBody String index() {
-    return "test";
-  }
+  private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
   @RequestMapping(value="/upload", method= RequestMethod.POST)
-  public @ResponseBody String handleFileUpload(
-      @RequestParam("file") MultipartFile file){
+  public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file){
     String name = "userId";
     if (!file.isEmpty()) {
       try {
@@ -49,9 +45,11 @@ public class IndexController {
         Video video = new Video();
         video.setName(name);
         video.setLocation(location);
+        logger.debug("Video : " + video.toString());
         videoService.sendVideoToEncoder(video);
         return "successfully" ;
       } catch (Exception e) {
+        logger.error("Error : " + e.getStackTrace());
         return "You failed to upload " + name + " => " + e.getMessage();
       }
     } else {

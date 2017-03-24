@@ -4,16 +4,12 @@ spring:
 ---
 spring:
   profiles: Dev
-  http:
-    multipart:
-      max-file-size: 200MB
-      max-request-size: 200MB
-server:
-  port: 8099
 debug: true
 app:
   movieQueue: movieQueue
-  movieLocation : C:/movie
+  movieLocation : C:\movie
+  ffmpegLocation : C:\ffmpeg
+  ffprobeLocation : C:\ffprobe
 rabbit:
   host: localhost
   port: 5672
@@ -27,12 +23,6 @@ logging:
 ---
 spring:
   profiles: Docker
-  http:
-    multipart:
-      max-file-size: ${MAX_FILE_SIZE}
-      max-request-size: ${MAX_REQUEST_SIZE}
-server:
-  port: ${SEVER_PORT}
 debug: false
 app:
   movieQueue: ${MOVIE_QUEUE}
