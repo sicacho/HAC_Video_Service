@@ -7,9 +7,10 @@ spring:
 debug: true
 app:
   movieQueue: movieQueue
-  movieLocation : C:\movie
-  ffmpegLocation : C:\ffmpeg
-  ffprobeLocation : C:\ffprobe
+  movieLocation : C:\\movie
+  movieEncodedLocation : C:\\movieEncode
+  ffmpegLocation : C:\\ffmpeg
+  ffprobeLocation : C:\\ffprobe
 rabbit:
   host: localhost
   port: 5672
