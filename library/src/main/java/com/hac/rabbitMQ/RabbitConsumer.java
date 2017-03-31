@@ -5,6 +5,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Consumer;
 
 import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by Administrator on 3/23/2017.
@@ -17,11 +18,17 @@ public class RabbitConsumer {
   public RabbitConsumer(Connection connection, String queueName) throws IOException {
     this.connection = connection;
     this.queueName = queueName;
-    channel.queueDeclare(queueName, false, false, false, null);
+    channel = connection.createChannel();
+    channel.queueDeclare(queueName, true, false, false, null);
   }
 
   public void consume(Consumer consumer) throws Exception {
     channel.basicConsume(queueName, true, consumer);
+  }
+
+  public void destroy() throws IOException, TimeoutException {
+      channel.close();
+      connection.close();
   }
 
   public Channel getChannel() {

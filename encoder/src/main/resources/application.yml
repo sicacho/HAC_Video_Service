@@ -7,10 +7,11 @@ spring:
 debug: true
 app:
   movieQueue: movieQueue
-  movieLocation : C:\\movie
-  movieEncodedLocation : C:\\movieEncode
-  ffmpegLocation : C:\\ffmpeg
-  ffprobeLocation : C:\\ffprobe
+  queueFail: queueFail
+  movieLocation: C:\movie
+  movieEncodedLocation: C:\movieEncode
+  ffmpegLocation: C:\ffmpeg\bin\ffmpeg.exe
+  ffprobeLocation: C:\ffmpeg\bin\ffprobe.exe
 rabbit:
   host: localhost
   port: 5672
@@ -19,7 +20,6 @@ rabbit:
   numberThread: 1
 logging:
   level:
-    org.springframework.web: ERROR
     com.hac.*: DEBUG
 ---
 spring:

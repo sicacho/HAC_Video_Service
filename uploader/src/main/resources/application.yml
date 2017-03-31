@@ -13,7 +13,7 @@ server:
 debug: true
 app:
   movieQueue: movieQueue
-  movieLocation : C:/movie
+  movieLocation : C:\movie
 rabbit:
   host: localhost
   port: 5672

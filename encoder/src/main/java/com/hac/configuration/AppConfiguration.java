@@ -1,5 +1,6 @@
 package com.hac.configuration;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -11,25 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix = "application")
+@ConfigurationProperties(prefix = "app")
+@Data
 public class AppConfiguration {
-
-  String movieLocation;
+  String movieEncodedLocation;
   String movieQueue;
+  String queueFail;
+  String ffmpegLocation;
+  String ffprobeLocation;
 
-  public String getMovieLocation() {
-    return movieLocation;
-  }
-
-  public void setMovieLocation(String movieLocation) {
-    this.movieLocation = movieLocation;
-  }
-
-  public String getMovieQueue() {
-    return movieQueue;
-  }
-
-  public void setMovieQueue(String movieQueue) {
-    this.movieQueue = movieQueue;
-  }
 }

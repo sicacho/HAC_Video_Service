@@ -26,13 +26,12 @@ public class TestEncode {
         .setAudioSampleRate(48_000)  // at 48KHz
         .setAudioBitRate(32768)      // at 32 kbit/s
         .setVideoCodec("libx264")     // Video using x264
-        .setVideoFrameRate(24, 1)     // at 24 frames per second
+        .setVideoFrameRate(30, 1)     // at 24 frames per second
         .setVideoResolution(640, 480) // at 640x480 resolution
         .setStrict(FFmpegBuilder.Strict.EXPERIMENTAL) // Allow FFmpeg to use experimental specs
         .done();
     FFmpegExecutor executor = new FFmpegExecutor(ffmpeg,ffprobe);
-
-// Run a one-pass encode
     executor.createJob(builder).run();
+
   }
 }

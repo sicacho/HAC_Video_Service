@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import org.apache.commons.io.FileUtils;
 
 /**
  * Created by Administrator on 3/13/2017.
@@ -32,14 +33,15 @@ public class IndexController {
 
   @RequestMapping(value="/upload", method= RequestMethod.POST)
   public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file){
-    String name = "userId";
+    String name = "userId.mp4";
+    name = buildNameByStartTimeUpload(name);
     if (!file.isEmpty()) {
       try {
         String location = appConfiguration.getMovieLocation();
-        name = buildNameByStartTimeUpload(name);
+        location = location + File.separator + name;
         byte[] bytes = file.getBytes();
         BufferedOutputStream stream =
-            new BufferedOutputStream(new FileOutputStream(new File(location + "\\" + name)));
+            new BufferedOutputStream(FileUtils.openOutputStream(new File(location)));
         stream.write(bytes);
         stream.close();
         Video video = new Video();
@@ -49,7 +51,7 @@ public class IndexController {
         videoService.sendVideoToEncoder(video);
         return "successfully" ;
       } catch (Exception e) {
-        logger.error("Error : " + e.getStackTrace());
+        logger.error("Error : " + e);
         return "You failed to upload " + name + " => " + e.getMessage();
       }
     } else {
