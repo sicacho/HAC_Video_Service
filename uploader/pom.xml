@@ -6,12 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.HAC</groupId>
     <artifactId>uploader</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>../model</module>
-        <module>../library</module>
-    </modules>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -50,6 +47,11 @@
             <version>4.1.0</version>
         </dependency>
         <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>com.HAC</groupId>
             <artifactId>model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
@@ -58,11 +60,6 @@
             <groupId>com.HAC</groupId>
             <artifactId>library</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>RELEASE</version>
         </dependency>
     </dependencies>
 

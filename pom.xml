@@ -7,16 +7,29 @@
 	<artifactId>videoservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>uploader</module>
 		<module>library</module>
+		<module>model</module>
+		<module>uploader</module>
 		<module>encoder</module>
 	</modules>
 	<packaging>pom</packaging>
-
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 	<name>video service</name>
 	<description>video service for HAC </description>
 
 
-
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

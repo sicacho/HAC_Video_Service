@@ -7,7 +7,7 @@
     <groupId>com.HAC</groupId>
     <artifactId>encoder</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -22,10 +22,6 @@
             </plugin>
         </plugins>
     </build>
-    <modules>
-        <module>../model</module>
-        <module>../library</module>
-    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -64,6 +60,11 @@
             <version>4.1.0</version>
         </dependency>
         <dependency>
+            <groupId>net.bramp.ffmpeg</groupId>
+            <artifactId>ffmpeg</artifactId>
+            <version>0.6.1</version>
+        </dependency>
+        <dependency>
             <groupId>com.HAC</groupId>
             <artifactId>model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
@@ -73,10 +74,7 @@
             <artifactId>library</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>net.bramp.ffmpeg</groupId>
-            <artifactId>ffmpeg</artifactId>
-            <version>0.6.1</version>
-        </dependency>
     </dependencies>
+
+
 </project>

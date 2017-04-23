@@ -28,6 +28,9 @@ debug: false
 app:
   movieQueue: ${MOVIE_QUEUE}
   movieLocation : ${MOVIE_LOCATION}
+  movieEncodedLocation: ${MOVIE_ENCODE_LOCATION}
+  ffmpegLocation: ${FFMPEG_LOCATION}
+  ffprobeLocation: ${FFPROBE_LOCATION}
 rabbit:
   host: ${RABBIT_HOST}
   port: ${RABBIT_PORT}

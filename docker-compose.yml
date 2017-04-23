@@ -1,0 +1,39 @@
+version: "3"
+services:
+  web:
+    image: sicacho/hac_uploader
+    container_name: uploader
+    ports:
+      - "8090:8090"
+    volumes:
+      - "C:/movie:/home/HACService/app/movie"
+    environment:
+      - MOVIE_QUEUE=movieQueue
+      - MOVIE_LOCATION=/home/HACService/app/movie
+      - RABBIT_HOST=rabbit
+      - RABBIT_PORT=5672
+      - RABBIT_USERNAME=docker
+      - RABBIT_PASSWORD=docker
+      - MAX_FILE_SIZE=200MB
+      - MAX_REQUEST_SIZE=200MB
+      - SEVER_PORT=8090
+  worker:
+    image: sicacho/hac_encoder
+    container_name: encoder
+    volumes:
+      - "C:/movie:/home/HACService/app/movie"
+      - "C:/movieEncoded/content:/home/HACService/app/movieEncoded"
+    environment:
+      - MOVIE_QUEUE=movieQueue
+      - MOVIE_LOCATION=/home/HACService/app/movie
+      - MOVIE_ENCODE_LOCATION=/home/HACService/app/movieEncoded
+      - FFMPEG_LOCATION=/home/HACService/app/ffmpeg/ffmpeg
+      - FFPROBE_LOCATION=/home/HACService/app/ffmpeg/ffprobe
+      - RABBIT_HOST=rabbit
+      - RABBIT_PORT=5672
+      - RABBIT_USERNAME=docker
+      - RABBIT_PASSWORD=docker
+networks:
+  default:
+    external:
+      name: Hac_Network
